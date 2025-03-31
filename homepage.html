@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Printing Hub - Premium 3D Printing Services</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div class="page-transition"></div>
+    
+    <header>
+        <div class="logo">
+            <a href="#home" class="logo-link">
+                <span class="logo-text">3D<span class="accent">Print</span>Hub</span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="animate-text">Next Generation <span class="accent">3D Printing</span> Solutions</h1>
+                <p class="animate-text-delay">Transform your ideas into reality with our premium 3D printing services</p>
+                <div class="cta-buttons animate-text-delay-2">
+                    <a href="#services" class="btn primary">Our Services</a>
+                    <a href="#contact" class="btn secondary">Get a Quote</a>
+                </div>
+            </div>
+            <div class="hero-3d-model">
+                <!-- 3D model will be rendered here with Three.js -->
+                <div id="model-container"></div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="section-header">
+                <h2><span class="accent">Our<span> Services</h2>
+                <p>Comprehensive 3D printing solutions for all your needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Prototyping</h3>
+                    <p>Rapid prototyping services to bring your concepts to life quickly and efficiently.</p>
+                    <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Custom Parts</h3>
+                    <p>Precision manufacturing of custom parts for various applications and industries.</p>
+                    <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Finishing Services</h3>
+                    <p>Professional finishing touches including painting, smoothing, and assembly.</p>
+                    <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3>3D Design</h3>
+                    <p>Expert 3D modeling and design services to help realize your vision.</p>
+                    <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- File Upload Section -->
+        <section id="upload" class="upload-section">
+            <div class="section-header">
+                <h2>Upload Your <span class="accent">STL Files</span></h2>
+                <p>Drag & drop or choose files to upload (STL only, max 100MB)</p>
+            </div>
+            <div class="upload-container">
+                <div class="upload-box" id="upload-box">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop your STL files here</h3>
+                    <p>or</p>
+                    <label for="file-input" class="btn primary">Choose Files</label>
+                    <input type="file" id="file-input" accept=".stl,model/stl" multiple style="display: none;">
+                </div>
+                <div class="file-list-container" id="file-list-container">
+                    <!-- Selected files will be displayed here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery">
+            <div class="section-header">
+                <h2>Our <span class="accent">Projects</span></h2>
+                <p>Explore our latest 3D printing projects and creations</p>
+            </div>
+
+            <!-- Project Carousel -->
+            <div class="project-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="carousel-slide current-slide">
+                            <img src="images/gallery/prototype-1.jpg" alt="Advanced Drone Prototype">
+                            <div class="carousel-slide-content">
+                                <h3>Advanced Drone Prototype</h3>
+                                <p>Custom-designed drone frame with integrated camera mount and battery compartment</p>
+                                <a href="#" class="btn secondary">View Project</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/gallery/prototype-1.jpg" alt="Medical Device Components">
+                            <div class="carousel-slide-content">
+                                <h3>Medical Device Components</h3>
+                                <p>Precision-printed parts for medical equipment with biocompatible materials</p>
+                                <a href="#" class="btn secondary">View Project</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/gallery/prototype-1.jpg" alt="Architectural Model">
+                            <div class="carousel-slide-content">
+                                <h3>Architectural Model</h3>
+                                <p>Detailed scale model of a modern building complex with interior details</p>
+                                <a href="#" class="btn secondary">View Project</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/gallery/prototype-1.jpg" alt="Custom Robotics Parts">
+                            <div class="carousel-slide-content">
+                                <h3>Custom Robotics Parts</h3>
+                                <p>Specialized components for an autonomous robot with precise tolerances</p>
+                                <a href="#" class="btn secondary">View Project</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/gallery/prototype-1.jpg" alt="Industrial Component">
+                            <div class="carousel-slide-content">
+                                <h3>Industrial Component</h3>
+                                <p>High-strength industrial part designed for heavy machinery with precise tolerances</p>
+                                <a href="#" class="btn secondary">View Project</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/gallery/prototype-1.jpg" alt="Artistic Sculpture">
+                            <div class="carousel-slide-content">
+                                <h3>Artistic Sculpture</h3>
+                                <p>Complex geometric sculpture with intricate details showcasing artistic possibilities</p>
+                                <a href="#" class="btn secondary">View Project</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/gallery/prototype-1.jpg" alt="Educational Model">
+                            <div class="carousel-slide-content">
+                                <h3>Educational Model</h3>
+                                <p>Anatomical model for medical education with color-coded parts and removable sections</p>
+                                <a href="#" class="btn secondary">View Project</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/gallery/prototype-1.jpg" alt="Consumer Product Prototype">
+                            <div class="carousel-slide-content">
+                                <h3>Consumer Product Prototype</h3>
+                                <p>Functional prototype for a new consumer electronics device with moving parts</p>
+                                <a href="#" class="btn secondary">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button carousel-button-prev is-hidden">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-button carousel-button-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-nav">
+                    <button class="carousel-indicator current-slide"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                </div>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="prototypes">
+                    <div class="gallery-image">
+                        <img src="images/gallery/prototype-1.jpg" alt="Prototype 1">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <h3>Product Prototype</h3>
+                                <p>Consumer electronics prototype with functional parts</p>
+                                <a href="#" class="view-project">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- More gallery items would be added here -->
+            </div>
+            <div class="gallery-load-more">
+                <button class="btn secondary">Load More Projects</button>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing">
+            <div class="section-header">
+                <h2>Our <span class="accent">Pricing</span></h2>
+                <p>Transparent and competitive pricing for all your 3D printing needs</p>
+            </div>
+            <div class="pricing-tabs">
+                <button class="pricing-tab active" data-tab="material">By Material</button>
+                <button class="pricing-tab" data-tab="size">By Size</button>
+                <button class="pricing-tab" data-tab="service">By Service</button>
+            </div>
+            <div class="pricing-content active" id="material-pricing">
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>PLA</h3>
+                            <p class="price">$5<span>/cubic inch</span></p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li>Biodegradable</li>
+                                <li>Good for prototypes</li>
+                                <li>Various colors</li>
+                                <li>Medium strength</li>
+                                <li>Fast printing</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn primary">Get Quote</a>
+                    </div>
+                    <!-- More pricing cards would be added here -->
+                </div>
+            </div>
+            <!-- Other pricing tabs content would be added here -->
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="section-header">
+                <h2>About <span class="accent">Us</span></h2>
+                <p>Learn more about our 3D printing journey and expertise</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="3DPRinter.jpeg" alt="Our 3D Printing Workshop">
+                </div>
+                <div class="about-text">
+                    <h3>Pioneering 3D Printing Excellence</h3>
+                    <p>Founded in 2015, 3DPrintHub has been at the forefront of additive manufacturing technology. Our team of experts combines years of experience with cutting-edge equipment to deliver exceptional 3D printing solutions.</p>
+                    <p>We believe in pushing the boundaries of what's possible with 3D printing, constantly innovating and refining our processes to achieve the best results for our clients.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Regular Clients</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Expert Team Members</span>
+                        </div>
+                    </div>
+                    <a href="team.html" class="btn secondary">Meet Our Team</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="section-header">
+                <h2>Get In <span class="accent">Touch</span></h2>
+                <p>Reach out to us for quotes, questions, or custom projects</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Our Location</h3>
+                            <p>IEDC Lab, Godrej Genesis Building 6th floor, Salt Lake Sector- V, Kolkata</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Call Us</h3>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>info@3dprinthub.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Working Hours</h3>
+                            <p>Mon-Fri: 9AM - 6PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">3D<span class="accent">Print</span>Hub</span>
+                <p>Premium 3D Printing Services</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Prototyping</a></li>
+                        <li><a href="#">Custom Parts</a></li>
+                        <li><a href="#">Finishing Services</a></li>
+                        <li><a href="#">3D Design</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 3DPrintHub. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        // File Upload Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadBox = document.getElementById('upload-box');
+            const fileInput = document.getElementById('file-input');
+            const fileListContainer = document.getElementById('file-list-container');
+            let selectedFiles = []; // Array to hold File objects
+
+            // --- Drag and Drop Event Handlers ---
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadBox.addEventListener(eventName, preventDefaults, false);
+                document.body.addEventListener(eventName, preventDefaults, false); // Prevent browser default behavior
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                uploadBox.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                uploadBox.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight() {
+                uploadBox.classList.add('dragover');
+            }
+
+            function unhighlight() {
+                uploadBox.classList.remove('dragover');
+            }
+
+            uploadBox.addEventListener('drop', handleDrop, false);
+
+            function handleDrop(e) {
+                let dt = e.dataTransfer;
+                let files = dt.files;
+                handleFiles(files);
+            }
+
+            // --- Choose File Button Handler ---
+            fileInput.addEventListener('change', function() {
+                handleFiles(this.files);
+            });
+
+            // --- Core File Handling Logic ---
+            function handleFiles(files) {
+                let newlyAddedFiles = [];
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+
+                    // Validation for STL files
+                    const isStlFile = file.name.toLowerCase().endsWith('.stl') || file.type === 'model/stl';
+                    if (!isStlFile) {
+                        alert(`File ${file.name} is not an STL file. Only STL files are allowed.`);
+                        continue; // Skip non-STL files
+                    }
+                    if (file.size > 100 * 1024 * 1024) { // 100MB limit
+                        alert(`File ${file.name} exceeds the 100MB size limit.`);
+                        continue; // Skip files that are too large
+                    }
+                    if (selectedFiles.some(existingFile => existingFile.name === file.name && existingFile.size === file.size)) {
+                        // Optional: Alert or just silently ignore duplicates
+                        continue; // Skip duplicates
+                    }
+
+                    newlyAddedFiles.push(file);
+                }
+                
+                if (newlyAddedFiles.length > 0) {
+                    selectedFiles = selectedFiles.concat(newlyAddedFiles);
+                    renderFileList();
+                }
+
+                // Reset file input
+                fileInput.value = '';
+            }
+
+            // --- Rendering the File List ---
+            function renderFileList() {
+                fileListContainer.innerHTML = ''; // Clear the current list
+                if (selectedFiles.length === 0) {
+                    fileListContainer.style.display = 'none'; // Hide if empty
+                    return;
+                }
+                
+                fileListContainer.style.display = 'block'; // Show if not empty
+
+                selectedFiles.forEach((file, index) => {
+                    const fileElement = document.createElement('div');
+                    fileElement.className = 'file-item';
+                    fileElement.dataset.fileIndex = index; 
+
+                    // Use a 3D model icon (e.g., fa-cube or fa-shapes)
+                    fileElement.innerHTML = `
+                        <div class="file-icon"><i class="fas fa-cube"></i></div> 
+                        <div class="file-details">
+                            <div class="file-name">${escapeHTML(file.name)}</div>
+                            <div class="file-size">${formatFileSize(file.size)}</div>
+                        </div>
+                        <button type="button" class="delete-btn" aria-label="Remove file ${escapeHTML(file.name)}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    fileListContainer.appendChild(fileElement);
+                });
+            }
+            
+            // --- Remove File Handler (using event delegation) ---
+            fileListContainer.addEventListener('click', function(e) {
+                 // Check if the click target is the button or its icon
+                const deleteButton = e.target.closest('.delete-btn');
+                if (deleteButton) {
+                    const fileElement = deleteButton.closest('.file-item');
+                    if (fileElement && fileElement.dataset.fileIndex !== undefined) {
+                        const indexToRemove = parseInt(fileElement.dataset.fileIndex, 10);
+                        removeFile(indexToRemove);
+                    }
+                }
+            });
+
+            function removeFile(index) {
+                if (index >= 0 && index < selectedFiles.length) {
+                    selectedFiles.splice(index, 1); // Remove file from the array
+                    renderFileList(); // Re-render the list
+                }
+            }
+
+            // --- Utility Functions ---
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            function escapeHTML(str) {
+                 return str.replace(/[&<>'"/]/g, function (s) {
+                    const entityMap = {
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&#39;',
+                        '/': '&#x2F;'
+                    };
+                    return entityMap[s];
+                });
+            }
+        });
+    </script>
+
+    <script src="js/iframe-nav.js"></script>
+</body>
+</html>
